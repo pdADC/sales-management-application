@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9AEA61B-35AB-4CF7-9881-F1963A77E0A1}|ASM_Final_StoreX.csproj|D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\forms\\dashboard-form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{D9AEA61B-35AB-4CF7-9881-F1963A77E0A1}|ASM_Final_StoreX.csproj|solutionrelative:forms\\dashboard-form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{D9AEA61B-35AB-4CF7-9881-F1963A77E0A1}|ASM_Final_StoreX.csproj|d:\\btec\\fall2025\\database design\\window form ui\\asm_final_storex\\forms\\orderdetail_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9AEA61B-35AB-4CF7-9881-F1963A77E0A1}|ASM_Final_StoreX.csproj|solutionrelative:forms\\orderdetail_form.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9AEA61B-35AB-4CF7-9881-F1963A77E0A1}|ASM_Final_StoreX.csproj|d:\\btec\\fall2025\\database design\\window form ui\\asm_final_storex\\db_helper\\datahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9AEA61B-35AB-4CF7-9881-F1963A77E0A1}|ASM_Final_StoreX.csproj|solutionrelative:db_helper\\datahelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9AEA61B-35AB-4CF7-9881-F1963A77E0A1}|ASM_Final_StoreX.csproj|D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9AEA61B-35AB-4CF7-9881-F1963A77E0A1}|ASM_Final_StoreX.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +31,41 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DashBoard-Form.cs [Design]",
-              "DocumentMoniker": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\FORMS\\DashBoard-Form.cs",
-              "RelativeDocumentMoniker": "FORMS\\DashBoard-Form.cs",
-              "ToolTip": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\FORMS\\DashBoard-Form.cs [Design]",
-              "RelativeToolTip": "FORMS\\DashBoard-Form.cs [Design]",
+              "Title": "OrderDetail_Form.cs",
+              "DocumentMoniker": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\FORMS\\OrderDetail_Form.cs",
+              "RelativeDocumentMoniker": "FORMS\\OrderDetail_Form.cs",
+              "ToolTip": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\FORMS\\OrderDetail_Form.cs",
+              "RelativeToolTip": "FORMS\\OrderDetail_Form.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAgwF4AAABuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-29T13:19:16.55Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-12-04T23:19:31.796Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "dataHelper.cs",
+              "DocumentMoniker": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\DB_Helper\\dataHelper.cs",
+              "RelativeDocumentMoniker": "DB_Helper\\dataHelper.cs",
+              "ToolTip": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\DB_Helper\\dataHelper.cs",
+              "RelativeToolTip": "DB_Helper\\dataHelper.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAgwH4AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T19:37:53.361Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\BTEC\\Fall2025\\Database Design\\Window Form UI\\ASM_Final_StoreX\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T09:08:38.956Z",
+              "EditorCaption": ""
             }
           ]
         }

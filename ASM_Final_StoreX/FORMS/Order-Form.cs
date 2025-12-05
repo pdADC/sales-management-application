@@ -23,18 +23,21 @@ namespace ASM_Final_StoreX.FORMS
 
         private void Order_Form_Load(object sender, EventArgs e)
         {
-            string query = @"select o.OrderID,o.CustomerName,e.EmployeeName,o.OrderDate,o.TotalAmount,o.Status
-                            from Orders o					
-                            join Employee e on o.EmployeeID=e.EmployeeID
-                            where o.IsDeleted =1";
+            string query = @"select o.OrderID,c.CustomerName,e.EmployeeName,o.OrderDate,o.TotalAmount,o.StatusPay
+from Orders o
+join Customer c on o.CustomerID=c.CustomerID
+join Employee e on o.EmployeeID=e.EmployeeID
+where o.IsDeleted =1";
             DataTable data = dbh.GetData(query);
             dgvOrder.DataSource = data;
         }
         public void reLoad()
         {
-            string query = @"select o.OrderID,o.CustomerName,e.EmployeeName,o.OrderDate,o.TotalAmount,o.Status
-                            from Orders o					
-                            join Employee e on o.EmployeeID=e.EmployeeID where o.IsDeleted =1";
+            string query = @"select o.OrderID,c.CustomerName,e.EmployeeName,o.OrderDate,o.TotalAmount,o.StatusPay
+from Orders o
+join Customer c on o.CustomerID=c.CustomerID
+join Employee e on o.EmployeeID=e.EmployeeID
+where o.IsDeleted =1";
             dgvOrder.DataSource = dbh.GetData(query);
         }
         private void clear()
@@ -55,10 +58,12 @@ namespace ASM_Final_StoreX.FORMS
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string query = @"select o.OrderID,o.CustomerName,e.EmployeeName,o.OrderDate,o.TotalAmount,o.Status
-                            from Orders o					
-                            join Employee e on o.EmployeeID=e.EmployeeID
-                            where OrderID=@OrderID and o.IsDeleted =1";
+            string query =
+                @"select o.OrderID,c.CustomerName,e.EmployeeName,o.OrderDate,o.TotalAmount,o.StatusPay
+                from Orders o
+                join Customer c on o.CustomerID=c.CustomerID
+                join Employee e on o.EmployeeID=e.EmployeeID
+                where OrderID=@OrderID and o.IsDeleted =1";
             SqlParameter[] parameters =
             {
                 new SqlParameter("@OrderID",txtOrderID.Text)
@@ -84,7 +89,7 @@ namespace ASM_Final_StoreX.FORMS
                 txtCustomerName.Text = row.Cells["CustomerName"].Value.ToString();
                 cbEmployeeName.Text = row.Cells["EmployeeName"].Value.ToString();
                 txtTotal_amount.Text = row.Cells["TotalAmount"].Value.ToString();
-                cbStatus.Text=row.Cells["status"].Value.ToString();
+                cbStatus.Text = row.Cells["StatusPay"].Value.ToString();
                 dateTimeOrder.Value = (DateTime)row.Cells["OrderDate"].Value;
             }
             catch (Exception ex)
@@ -101,21 +106,26 @@ namespace ASM_Final_StoreX.FORMS
                 MessageBox.Show("Please enter complete Order information!");
                 return; // Stop the function, do not let it run anymore
             }
+            string Qtest = "Select count(*) from Customer where CustomerName=@CustomerName and IsDeleted =1";
+            SqlParameter[] Ptest = { new SqlParameter("@CustomerName", txtCustomerName.Text) };
+            int count = Convert.ToInt32(dbh.ExecuteScalar(Qtest, Ptest));
+            if (count < 1)
+            {
+                MessageBox.Show("This customer is not in the system yet, please create new customer information", "", MessageBoxButtons.OK);
+                return;
+            }
             try
             {
                 // create query
                 txtOrderID.Text = string.Empty;
-                string query = @"insert into Orders (CustomerName,EmployeeID,OrderDate,TotalAmount,Status)
-                                    values (@CustomerName,
-	                                       (select EmployeeID from Employee where EmployeeName=@EmployeeName),
-	                                       @date,
-	                                       @TotalAmount,
-	                                       @Status)";
+                string query =
+                    @"insert into Orders (CustomerID,EmployeeID,OrderDate,TotalAmount,StatusPay)
+                    values ((Select CustomerID from Customer where CustomerName=@CustomerName),@EmployeeID,@date,@TotalAmount,@Status)";
                 SqlParameter[] parameters =
                   {
                                 //new SqlParameter("@OrderID",txtOrderID.Text),
                                 new SqlParameter("@CustomerName",txtCustomerName.Text),
-                                new SqlParameter("@EmployeeName",cbEmployeeName.Text),
+                                new SqlParameter("@EmployeeID",cbEmployeeName.SelectedValue),
                                 new SqlParameter("@date",dateTimeOrder.Value),
                                 new SqlParameter("@TotalAmount",txtTotal_amount.Text),
                                 new SqlParameter("@Status",cbStatus.Text)
@@ -142,7 +152,15 @@ namespace ASM_Final_StoreX.FORMS
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            if (dateTimeOrder.Value > DateTime.Now.Date)
+            string Qtest = "Select count(*) from Customer where CustomerName=@CustomerName and IsDeleted =1";
+            SqlParameter[] Ptest = { new SqlParameter("@CustomerName", txtCustomerName.Text) };
+            int count = Convert.ToInt32(dbh.ExecuteScalar(Qtest, Ptest));
+            if (count < 1)
+            {
+                MessageBox.Show("This customer is not in the system yet, please create new customer information", "", MessageBoxButtons.OK);
+                return;
+            }
+            if ((dateTimeOrder.Value.Date > DateTime.Now.Date) )
             {
                 MessageBox.Show("The selected date cannot be greater than the current date!", "Error", MessageBoxButtons.OK);
                 return;
@@ -150,11 +168,11 @@ namespace ASM_Final_StoreX.FORMS
             try
             {
                 string query = @"update Orders 
-                                set CustomerName =@CustomerName,
+                                set CustomerID =(Select CustomerID from Customer where CustomerName=@CustomerName),
 	                                EmployeeID=(select EmployeeID from Employee where EmployeeName=@EmployeeName),
 	                                OrderDate=@date,
 	                                TotalAmount=@TotalAmount,
-	                                Status=@Status
+	                                StatusPay=@Status
                                 where OrderID=@OrderID";
                 SqlParameter[] parameters =
                 {

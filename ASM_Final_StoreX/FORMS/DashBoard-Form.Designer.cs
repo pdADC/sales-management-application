@@ -34,7 +34,6 @@
             this.lblUser = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnStatistics = new System.Windows.Forms.Button();
             this.btnFromEmployee = new System.Windows.Forms.Button();
             this.btnFormCustomer = new System.Windows.Forms.Button();
             this.btnOrderDetail = new System.Windows.Forms.Button();
@@ -48,7 +47,6 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel2.Controls.Add(this.btnLogOut);
             this.panel2.Controls.Add(this.lblUser);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -63,7 +61,7 @@
             this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogOut.Image = global::ASM_Final_StoreX.Properties.Resources.log_out_icon_icons_com_50106;
             this.btnLogOut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLogOut.Location = new System.Drawing.Point(924, 21);
+            this.btnLogOut.Location = new System.Drawing.Point(912, 6);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(104, 38);
             this.btnLogOut.TabIndex = 1;
@@ -97,7 +95,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.panel1.Controls.Add(this.btnStatistics);
+            this.panel1.Controls.Add(this.btnLogOut);
             this.panel1.Controls.Add(this.btnFromEmployee);
             this.panel1.Controls.Add(this.btnFormCustomer);
             this.panel1.Controls.Add(this.btnOrderDetail);
@@ -108,21 +106,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1028, 50);
             this.panel1.TabIndex = 0;
-            // 
-            // btnStatistics
-            // 
-            this.btnStatistics.FlatAppearance.BorderSize = 0;
-            this.btnStatistics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStatistics.Image = global::ASM_Final_StoreX.Properties.Resources.static_icon1;
-            this.btnStatistics.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStatistics.Location = new System.Drawing.Point(869, 6);
-            this.btnStatistics.Name = "btnStatistics";
-            this.btnStatistics.Size = new System.Drawing.Size(128, 39);
-            this.btnStatistics.TabIndex = 6;
-            this.btnStatistics.Text = "Statistics";
-            this.btnStatistics.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnStatistics.UseVisualStyleBackColor = true;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
             // btnFromEmployee
             // 
@@ -204,14 +187,14 @@
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Location = new System.Drawing.Point(0, 109);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1028, 536);
+            this.panelDesktop.Size = new System.Drawing.Size(1028, 497);
             this.panelDesktop.TabIndex = 1;
             // 
             // DashBoard_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 645);
+            this.ClientSize = new System.Drawing.Size(1028, 606);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -240,6 +223,5 @@
         private System.Windows.Forms.Button btnFormProducts;
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Button btnLogOut;
-        private System.Windows.Forms.Button btnStatistics;
     }
 }

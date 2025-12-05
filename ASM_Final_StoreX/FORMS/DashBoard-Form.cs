@@ -47,13 +47,13 @@ namespace ASM_Final_StoreX.FORMS
                     btnFormProducts.Enabled = true;
                     btnOrderDetail.Enabled = true;
                     btnLogOut.Enabled = true;
-                    btnStatistics.Enabled = true;
+                    //btnStatistics.Enabled = true;
                     break;
                 case "Staff":
                     btnFormCustomer.Enabled = true;
                     btnFormOrders.Enabled = true;
                     btnFromEmployee.Enabled = false;
-                    btnStatistics.Enabled= false;
+                    //btnStatistics.Enabled= false;
                     btnFormProducts.Enabled = true;
                     btnOrderDetail.Enabled = true;
                     btnLogOut.Enabled = true;
@@ -65,7 +65,7 @@ namespace ASM_Final_StoreX.FORMS
                     btnFromEmployee.Enabled = false;
                     btnFormProducts.Enabled = true;
                     btnOrderDetail.Enabled = false;
-                    btnStatistics.Enabled=false;
+                    //btnStatistics.Enabled=false;
                     btnLogOut.Enabled = true;
                     lblUser.Text = "WAREHOUSE";
                     break;
@@ -115,10 +115,10 @@ namespace ASM_Final_StoreX.FORMS
             this.Close();
         }
 
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            openchilForm(new FORMS.Statistics_Form());
-        }
+        //private void btnStatistics_Click(object sender, EventArgs e)
+        //{
+        //    openchilForm(new FORMS.Statistics_Form());
+        //}
     }
 
 }

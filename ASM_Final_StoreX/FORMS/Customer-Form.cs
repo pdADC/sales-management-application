@@ -23,7 +23,6 @@ namespace ASM_Final_StoreX.FORMS
         {
             txtCustomerID.Text = "";
             txtCustomerName.Text = "";
-            cbGender.Text = "";
             txtAddress.Text = "";
             txtPhone.Text = "";
         }
@@ -41,10 +40,9 @@ namespace ASM_Final_StoreX.FORMS
                 MessageBox.Show("Delete failed");
             }
         }
-
         private void Customer_Form_Load(object sender, EventArgs e)
         {
-            string query = "select CustomerID,CustomerName,Gender,DateOfBirth,Address,PhoneNum from Customer where IsDeleted =1";
+            string query = "select CustomerID,CustomerName,Address,Phone from Customer where IsDeleted =1";
             DataTable data = dbh.GetData(query);
             dgvCustomer.DataSource = data;
         }
@@ -57,10 +55,8 @@ namespace ASM_Final_StoreX.FORMS
                 DataGridViewRow row = dgvCustomer.Rows[e.RowIndex]; // get the data row that user just selected
                 txtCustomerID.Text = row.Cells["CustomerID"].Value.ToString();
                 txtCustomerName.Text = row.Cells["CustomerName"].Value.ToString();
-                cbGender.Text = row.Cells["Gender"].Value.ToString();
-                dateTimeCusBirth.Value = Convert.ToDateTime(row.Cells["DateOfBirth"].Value);
                 txtAddress.Text = row.Cells["Address"].Value.ToString();
-                txtPhone.Text = row.Cells["PhoneNum"].Value.ToString();
+                txtPhone.Text = row.Cells["Phone"].Value.ToString();
             }
             catch (Exception ex)
             {
@@ -70,23 +66,22 @@ namespace ASM_Final_StoreX.FORMS
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string query = "select CustomerID,CustomerName,Gender,DateOfBirth,Address,PhoneNum from Customer where CustomerID=@CustomerID and IsDeleted =1";
+            string query = "select CustomerID,CustomerName,Address,Phone from Customer where IsDeleted =1 and CustomerID=@CustomerID";
             SqlParameter[] parameter = { new SqlParameter("@CustomerID", txtCustomerID.Text) };
             DataTable data = dbh.GetData(query,parameter);
             dgvCustomer.DataSource = data;
             clear();
             if (data.Rows.Count <1 ) {
                 MessageBox.Show("This customer was not found");
-                dgvCustomer.DataSource=dbh.GetData("select CustomerID,CustomerName,Gender,DateOfBirth,Address,PhoneNum from Customer where IsDeleted =1");
+                dgvCustomer.DataSource=dbh.GetData("select CustomerID,CustomerName,Address,Phone from Customer where IsDeleted =1");
                 clear();
             }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCustomerID.Text) || 
+            if (
                 string.IsNullOrWhiteSpace(txtCustomerName.Text) ||
-                string.IsNullOrWhiteSpace(cbGender.Text)||
                 string.IsNullOrWhiteSpace(txtAddress.Text)||
                 string.IsNullOrWhiteSpace(txtPhone.Text))
             {
@@ -95,24 +90,11 @@ namespace ASM_Final_StoreX.FORMS
             }
             try
             {
-                string Qtest = "select count(*) from Customer where CustomerID=@CustomerID";
-                SqlParameter[] Ptest = { new SqlParameter("@CustomerID", txtCustomerID.Text) };
-                int count = Convert.ToInt32(dbh.ExecuteScalar(Qtest, Ptest));
-                if (count > 0)
-                {
-                    DialogResult r = MessageBox.Show("This Customer ID already exists", "error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
                     // create query
-                    string query = @"insert into Customer(CustomerID,CustomerName,Gender,DateOfBirth,Address,PhoneNum)
-values (@CustomerID,@CustomerName,@Gender,@birth,@Address,@Phone)";
+                    string query = @"insert into Customer (CustomerName,Address,Phone) values (@CustomerName,@Address,@Phone)";
                     SqlParameter[] parameters =
                       {
-                                new SqlParameter("@CustomerID",txtCustomerID.Text),
                                 new SqlParameter("@CustomerName",txtCustomerName.Text),
-                                new SqlParameter("@Gender",cbGender.Text),
-                                new SqlParameter("@birth",dateTimeCusBirth.Value),
                                 new SqlParameter("@Address",txtAddress.Text),
                                 new SqlParameter("@Phone",txtPhone.Text)
                        };
@@ -123,13 +105,12 @@ values (@CustomerID,@CustomerName,@Gender,@birth,@Address,@Phone)";
                         MessageBox.Show("successfully added new Customer");
                         // reload dgv
                         clear();
-                        dgvCustomer.DataSource = dbh.GetData("select CustomerID,CustomerName,Gender,DateOfBirth,Address,PhoneNum from Customer where IsDeleted =1");
+                        dgvCustomer.DataSource = dbh.GetData("select CustomerID,CustomerName,Address,Phone from Customer where IsDeleted =1");
                     }
                     else
                     {
                         MessageBox.Show("adding new Customer failed");
                     }
-                }
             }
             catch (Exception ex)
             {
@@ -141,19 +122,14 @@ values (@CustomerID,@CustomerName,@Gender,@birth,@Address,@Phone)";
         {
             try
             {
-                string query = @"update Customer 
-                                 set CustomerName=@CustomerName,
-	                                 Gender=@Gender,
-	                                 DateOfBirth=@birth,
-	                                 Address=@Address,
-	                                 PhoneNum=@Phone
-                                where CustomerID=@CustomerID";
+                string query = @"update Customer set CustomerName= @CustomerName,
+					 Address =@Address,
+					 Phone = @Phone
+                     where CustomerID=@CustomerID";
                 SqlParameter[] parameters =
                 {
                 new SqlParameter("@CustomerID",txtCustomerID.Text),
                 new SqlParameter("@CustomerName",txtCustomerName.Text),
-                new SqlParameter("@Gender",cbGender.Text),
-                new SqlParameter("@birth",dateTimeCusBirth.Value),
                 new SqlParameter("@Address",txtAddress.Text),
                 new SqlParameter("@Phone",txtPhone.Text),
             };
@@ -162,7 +138,7 @@ values (@CustomerID,@CustomerName,@Gender,@birth,@Address,@Phone)";
                 {
                     MessageBox.Show("updated successfully");
                     clear();
-                    dgvCustomer.DataSource = dbh.GetData("select CustomerID,CustomerName,Gender,DateOfBirth,Address,PhoneNum from Customer where IsDeleted =1");
+                    dgvCustomer.DataSource = dbh.GetData("select CustomerID,CustomerName,Address,Phone from Customer where IsDeleted =1");
                 }
                 else
                 {
@@ -182,8 +158,13 @@ values (@CustomerID,@CustomerName,@Gender,@birth,@Address,@Phone)";
             if (r == DialogResult.Yes)
             {
                 DeleteCustomer(txtCustomerID.Text);
-                dgvCustomer.DataSource = dbh.GetData("select CustomerID,CustomerName,Gender,DateOfBirth,Address,PhoneNum from Customer where IsDeleted =1");
+                dgvCustomer.DataSource = dbh.GetData("select CustomerID,CustomerName,Address,Phone from Customer where IsDeleted =1");
             }
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

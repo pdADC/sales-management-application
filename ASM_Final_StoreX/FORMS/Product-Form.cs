@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ASM_Final_StoreX.DB_Helper;
+using ClosedXML.Excel;
 
 namespace ASM_Final_StoreX.FORMS
 {
@@ -19,14 +20,13 @@ namespace ASM_Final_StoreX.FORMS
         {
             InitializeComponent();
         }
-
         private void Product_Form_Load(object sender, EventArgs e)
         {
             string query = @"select p.ProductID,p.ProductName,c.CategoryName,s.SupplierName,p.Price,p.Stockquantity
-                            from Products p
-                            join Category c on p.CategoryID =c.CategoryID
-                            join Supplier s on p.SupplierID=s.SupplierID
-                            where IsDeleted =1";
+from Products p 
+join Category c on p.CategoryID=c.CategoryId
+join Supplier s on p.SupplierID=s.SupplierID
+where p.IsDeleted =1 ";
             DataTable data = dbh.GetData(query);
             dgvProduct.DataSource = data;
             GetCategory();
@@ -35,10 +35,10 @@ namespace ASM_Final_StoreX.FORMS
         public void reLoad()
         {
             string query = @"select p.ProductID,p.ProductName,c.CategoryName,s.SupplierName,p.Price,p.Stockquantity
-                            from Products p
-                            join Category c on p.CategoryID =c.CategoryID
-                            join Supplier s on p.SupplierID=s.SupplierID
-                            where IsDeleted =1";
+from Products p 
+join Category c on p.CategoryID=c.CategoryId
+join Supplier s on p.SupplierID=s.SupplierID
+where p.IsDeleted =1 ";
             dgvProduct.DataSource = dbh.GetData(query);
         }
         private void clear()
@@ -69,11 +69,16 @@ namespace ASM_Final_StoreX.FORMS
         }
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            string query = @"select p.ProductID,p.ProductName,c.CategoryName,s.SupplierName,p.Price,p.Stockquantity
-                            from Products p
-                            join Category c on p.CategoryID =c.CategoryID
-                            join Supplier s on p.SupplierID=s.SupplierID
-                            where IsDeleted =1 and ProductID=@ProductID";
+            if (string.IsNullOrWhiteSpace(txtProductID.Text))
+            {
+                MessageBox.Show("Please enter ProductID");
+                return; // Stop 
+            }
+            string query = @"select p.ProductName,c.CategoryName,s.SupplierName,p.Price,p.Stockquantity
+from Products p 
+join Category c on p.CategoryID=c.CategoryId
+join Supplier s on p.SupplierID=s.SupplierID
+where p.IsDeleted =1 and ProductID=@ProductID";
             SqlParameter[] parameters =
             {
                 new SqlParameter("@ProductID",txtProductID.Text)
@@ -111,7 +116,6 @@ namespace ASM_Final_StoreX.FORMS
         {
             // STEP 1: Check that the data cells are not blank
             if (
-                string.IsNullOrWhiteSpace(txtProductName.Text) ||
                 string.IsNullOrWhiteSpace(cbCategory.Text)||
                 string.IsNullOrWhiteSpace(cbSupplier.Text)||
                 string.IsNullOrWhiteSpace(txtPrice.Text)||
@@ -122,8 +126,8 @@ namespace ASM_Final_StoreX.FORMS
             }
             try
             {
-                string Qtest = "select count(*) from Products where ProductID = @ProductID ";
-                SqlParameter[] Ptest = { new SqlParameter("@ProductID", txtProductID.Text) };
+                string Qtest = "select count(*) from Products where ProductName = @ProductName ";
+                SqlParameter[] Ptest = { new SqlParameter("@ProductName", txtProductName.Text) };
                 int count = Convert.ToInt32(dbh.ExecuteScalar(Qtest, Ptest));
                 if (count > 0)
                 {
@@ -133,13 +137,12 @@ namespace ASM_Final_StoreX.FORMS
                 else
                 {
                     // create query
-                    string query = @"insert into Products (ProductID,ProductName,CategoryID,SupplierID,Price,StockQuantity)
-                                     values (@ProductID,@ProductName,@CategoryID,@SupplierID,@Price,@Stockquantity)";
+                    string query = @"insert into Products (ProductName,CategoryID,SupplierID,Price,Stockquantity) values (@ProductName,@CategoryId,@SupplierID,@Price,@Stockquantity)";
                     SqlParameter[] parameters =
                       {
-                                new SqlParameter("@ProductID",txtProductID.Text),
+                                //new SqlParameter("@ProductID",txtProductID.Text),
                                 new SqlParameter("@ProductName",txtProductName.Text),
-                                new SqlParameter("@CategoryID",cbCategory.SelectedValue.ToString()),
+                                new SqlParameter("@CategoryId",cbCategory.SelectedValue.ToString()),
                                 new SqlParameter("@SupplierID",cbSupplier.SelectedValue.ToString()),
                                 new SqlParameter("@Price",txtPrice.Text),
                                 new SqlParameter("@Stockquantity",txtStockquantity.Text)
@@ -169,19 +172,18 @@ namespace ASM_Final_StoreX.FORMS
         {
             try
             {
-                string query = @"update Products 
-                                set ProductName=@ProductName,
-	                                CategoryID=(select CategoryID from Category where CategoryName=@CategoryName),
-	                                SupplierID=(select SupplierID from Supplier where SupplierName=@SupplierName),
-	                                Price=@Price,
-	                                StockQuantity=@Stockquantity
-                                where ProductID=@ProductID";
+                string query = @"Update Products set ProductName=@ProductName,
+					CategoryID=@CategoryID,
+					SupplierID=@SupplierID,
+					Price=@Price,
+					Stockquantity=@Stockquantity
+                   where ProductID=@ProductID";
                 SqlParameter[] parameters =
                 {
                 new SqlParameter("@ProductID",txtProductID.Text),
                 new SqlParameter("@ProductName",txtProductName.Text),
-                new SqlParameter("@CategoryName",cbCategory.Text),
-                new SqlParameter("@SupplierName",cbSupplier.Text),               
+                new SqlParameter("@CategoryID",cbCategory.SelectedValue),
+                new SqlParameter("@SupplierID",cbSupplier.SelectedValue),               
                 new SqlParameter("@Price",txtPrice.Text),
                 new SqlParameter("@Stockquantity",txtStockquantity.Text),
             };
@@ -225,6 +227,48 @@ namespace ASM_Final_StoreX.FORMS
             else
             {
                 MessageBox.Show("Delete failed");
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProduct.Rows.Count == 0)
+                {
+                    MessageBox.Show("No data available to export", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                SaveFileDialog saveFileDialog = new SaveFileDialog
+                {
+                    Filter = "Excel Files|*.xlsx",
+                    Title = "Export Product Data",
+                    FileName = "Product.xlsx"
+                };
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    using (var workbook =new XLWorkbook())  // Create new Excel workbook (ClosedXML library)
+                    {
+                        var worksheet = workbook.Worksheets.Add("Product");  // Create a new sheet named "Products"
+                                                                             // WRITE DATA
+                        for (int i = 0; i < dgvProduct.Rows.Count; i++)   // Loop through each row
+                        {
+                            for (int j = 0; j < dgvProduct.Columns.Count; j++)   // Loop through each column
+                            {
+                                worksheet.Cell(i + 2, j + 1).Value = dgvProduct.Rows[i].Cells[j].Value?.ToString();
+                                // Write data to Excel, row + 2 because row 1 is header
+                                // Use ?. to avoid error if Cell value is null
+                            }
+                        }
+                        workbook.SaveAs(saveFileDialog.FileName);   // Save Excel file to the path selected by the user
+                    }
+
+                    MessageBox.Show("Exported successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)   
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

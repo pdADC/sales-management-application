@@ -54,6 +54,7 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvProduct = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).BeginInit();
@@ -298,6 +299,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnExport);
             this.panel1.Controls.Add(this.btnDelete);
             this.panel1.Controls.Add(this.dgvProduct);
             this.panel1.Controls.Add(this.label2);
@@ -314,7 +316,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(611, 436);
+            this.btnDelete.Location = new System.Drawing.Point(592, 436);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(89, 33);
             this.btnDelete.TabIndex = 0;
@@ -341,6 +343,21 @@
             this.label2.Size = new System.Drawing.Size(187, 20);
             this.label2.TabIndex = 8;
             this.label2.Text = "MANAGE PRODUCTS";
+            // 
+            // btnExport
+            // 
+            this.btnExport.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Bahnschrift", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.White;
+            this.btnExport.Location = new System.Drawing.Point(903, 20);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(60, 25);
+            this.btnExport.TabIndex = 9;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // Product_Form
             // 
@@ -389,5 +406,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvProduct;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnExport;
     }
 }

@@ -128,6 +128,7 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(172, 1);
             this.panel5.TabIndex = 40;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
             // label6
             // 
@@ -139,6 +140,7 @@
             this.label6.Size = new System.Drawing.Size(107, 16);
             this.label6.TabIndex = 38;
             this.label6.Text = "Total revenue:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtRevenue
             // 
@@ -147,6 +149,7 @@
             this.txtRevenue.Name = "txtRevenue";
             this.txtRevenue.Size = new System.Drawing.Size(172, 20);
             this.txtRevenue.TabIndex = 39;
+            this.txtRevenue.TextChanged += new System.EventHandler(this.txtRevenue_TextChanged);
             // 
             // panel3
             // 
@@ -155,6 +158,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(172, 1);
             this.panel3.TabIndex = 37;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // label5
             // 
@@ -166,6 +170,7 @@
             this.label5.Size = new System.Drawing.Size(168, 16);
             this.label5.TabIndex = 35;
             this.label5.Text = "Total number of orders:";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // txtTotalOrder
             // 
@@ -174,6 +179,7 @@
             this.txtTotalOrder.Name = "txtTotalOrder";
             this.txtTotalOrder.Size = new System.Drawing.Size(172, 20);
             this.txtTotalOrder.TabIndex = 36;
+            this.txtTotalOrder.TextChanged += new System.EventHandler(this.txtTotalOrder_TextChanged);
             // 
             // label4
             // 

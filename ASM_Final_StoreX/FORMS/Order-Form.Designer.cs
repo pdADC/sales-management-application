@@ -209,7 +209,7 @@
             this.cbStatus.ForeColor = System.Drawing.Color.DarkTurquoise;
             this.cbStatus.FormattingEnabled = true;
             this.cbStatus.Items.AddRange(new object[] {
-            "Already Paid",
+            "Paid",
             "Unpaid"});
             this.cbStatus.Location = new System.Drawing.Point(23, 394);
             this.cbStatus.Name = "cbStatus";

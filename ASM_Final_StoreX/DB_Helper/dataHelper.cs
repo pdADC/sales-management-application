@@ -15,7 +15,7 @@ namespace ASM_Final_StoreX.DB_Helper
     public class dataHelper
     {
         // Connection string to SQL
-        private static string ConnString = "Data Source=DESKTOP-NQHAGK3\\SQLEXPRESS;Initial Catalog=Store_X;Integrated Security=True;Encrypt=False";
+        private static string ConnString = "Data Source=DESKTOP-NQHAGK3\\SQLEXPRESS;Initial Catalog=StoreX;Integrated Security=True;Encrypt=False";
 
         //Function 1 GetDATA - get data and fill it into DataTable
         public DataTable GetData(string query, SqlParameter[] parameters = null, bool isStoredProcedure = false )
@@ -117,13 +117,11 @@ namespace ASM_Final_StoreX.DB_Helper
         // 5) CHECKLOGIN FUNCTION - CHECK LOGIN
         public string CheckLogin(string userName, string password)
         {
-            string query = "select r.RoleName " +
-                          "from Roles r " +
-                          "join Users u on r.RoleID =u.RoleID " +
-                          "where u.UserName= @UserName and u.PasswordHash= @PasswordHash";
+            string query = "select  Role from Employee where UserName=@UserName and PasswordHash=@PasswordHash";
             SqlParameter[] parameters =
             {
                 new SqlParameter("@UserName", userName),
+                //new SqlParameter("@PasswordHash",HashPassword(password))
                 new SqlParameter("@PasswordHash",HashPassword(password))
             };
             object result = ExecuteScalar(query, parameters);

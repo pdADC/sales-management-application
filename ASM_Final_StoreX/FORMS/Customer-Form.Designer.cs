@@ -30,8 +30,6 @@
         {
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
@@ -41,14 +39,10 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.txtCustomerName = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.lblCustomerGender = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
-            this.dateTimeCusBirth = new System.Windows.Forms.DateTimePicker();
             this.txtAddress = new System.Windows.Forms.TextBox();
-            this.cbGender = new System.Windows.Forms.ComboBox();
             this.btnDelete = new System.Windows.Forms.Button();
             this.dgvCustomer = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -62,7 +56,7 @@
             // panel8
             // 
             this.panel8.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel8.Location = new System.Drawing.Point(23, 413);
+            this.panel8.Location = new System.Drawing.Point(27, 299);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(184, 1);
             this.panel8.TabIndex = 18;
@@ -70,31 +64,15 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel7.Location = new System.Drawing.Point(23, 349);
+            this.panel7.Location = new System.Drawing.Point(27, 235);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(184, 1);
             this.panel7.TabIndex = 17;
             // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel6.Location = new System.Drawing.Point(23, 276);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(184, 1);
-            this.panel6.TabIndex = 16;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel5.Location = new System.Drawing.Point(23, 202);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(184, 1);
-            this.panel5.TabIndex = 15;
-            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel4.Location = new System.Drawing.Point(23, 135);
+            this.panel4.Location = new System.Drawing.Point(27, 166);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(184, 1);
             this.panel4.TabIndex = 14;
@@ -102,7 +80,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.panel2.Location = new System.Drawing.Point(23, 67);
+            this.panel2.Location = new System.Drawing.Point(27, 98);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(184, 1);
             this.panel2.TabIndex = 13;
@@ -112,7 +90,7 @@
             this.btnSearch.Font = new System.Drawing.Font("Nirmala UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.Image = global::ASM_Final_StoreX.Properties.Resources.search_icon;
             this.btnSearch.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSearch.Location = new System.Drawing.Point(213, 48);
+            this.btnSearch.Location = new System.Drawing.Point(217, 79);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(68, 20);
             this.btnSearch.TabIndex = 1;
@@ -126,7 +104,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.label3.Location = new System.Drawing.Point(20, 29);
+            this.label3.Location = new System.Drawing.Point(24, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(22, 16);
             this.label3.TabIndex = 0;
@@ -135,7 +113,7 @@
             // txtCustomerID
             // 
             this.txtCustomerID.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.txtCustomerID.Location = new System.Drawing.Point(23, 48);
+            this.txtCustomerID.Location = new System.Drawing.Point(27, 79);
             this.txtCustomerID.Name = "txtCustomerID";
             this.txtCustomerID.Size = new System.Drawing.Size(185, 20);
             this.txtCustomerID.TabIndex = 0;
@@ -145,7 +123,7 @@
             this.lblCustomer.AutoSize = true;
             this.lblCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCustomer.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.lblCustomer.Location = new System.Drawing.Point(20, 97);
+            this.lblCustomer.Location = new System.Drawing.Point(24, 128);
             this.lblCustomer.Name = "lblCustomer";
             this.lblCustomer.Size = new System.Drawing.Size(117, 16);
             this.lblCustomer.TabIndex = 0;
@@ -158,7 +136,7 @@
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(129, 427);
+            this.btnUpdate.Location = new System.Drawing.Point(133, 313);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(89, 33);
             this.btnUpdate.TabIndex = 8;
@@ -169,7 +147,7 @@
             // txtCustomerName
             // 
             this.txtCustomerName.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.txtCustomerName.Location = new System.Drawing.Point(23, 116);
+            this.txtCustomerName.Location = new System.Drawing.Point(27, 147);
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(185, 20);
             this.txtCustomerName.TabIndex = 2;
@@ -181,7 +159,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Bahnschrift", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(23, 427);
+            this.btnAdd.Location = new System.Drawing.Point(27, 313);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(81, 33);
             this.btnAdd.TabIndex = 7;
@@ -189,34 +167,12 @@
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // lblCustomerGender
-            // 
-            this.lblCustomerGender.AutoSize = true;
-            this.lblCustomerGender.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCustomerGender.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.lblCustomerGender.Location = new System.Drawing.Point(20, 163);
-            this.lblCustomerGender.Name = "lblCustomerGender";
-            this.lblCustomerGender.Size = new System.Drawing.Size(58, 16);
-            this.lblCustomerGender.TabIndex = 0;
-            this.lblCustomerGender.Text = "Gender";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.label6.Location = new System.Drawing.Point(20, 238);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(94, 16);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "Date Of Birth";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.label1.Location = new System.Drawing.Point(20, 375);
+            this.label1.Location = new System.Drawing.Point(24, 261);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 16);
             this.label1.TabIndex = 0;
@@ -227,7 +183,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.label7.Location = new System.Drawing.Point(20, 311);
+            this.label7.Location = new System.Drawing.Point(24, 197);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 16);
             this.label7.TabIndex = 0;
@@ -236,38 +192,18 @@
             // txtPhone
             // 
             this.txtPhone.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.txtPhone.Location = new System.Drawing.Point(23, 394);
+            this.txtPhone.Location = new System.Drawing.Point(27, 280);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(185, 20);
             this.txtPhone.TabIndex = 6;
             // 
-            // dateTimeCusBirth
-            // 
-            this.dateTimeCusBirth.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimeCusBirth.Location = new System.Drawing.Point(23, 257);
-            this.dateTimeCusBirth.Name = "dateTimeCusBirth";
-            this.dateTimeCusBirth.Size = new System.Drawing.Size(185, 20);
-            this.dateTimeCusBirth.TabIndex = 4;
-            // 
             // txtAddress
             // 
             this.txtAddress.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.txtAddress.Location = new System.Drawing.Point(23, 330);
+            this.txtAddress.Location = new System.Drawing.Point(27, 216);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(185, 20);
             this.txtAddress.TabIndex = 5;
-            // 
-            // cbGender
-            // 
-            this.cbGender.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.cbGender.FormattingEnabled = true;
-            this.cbGender.Items.AddRange(new object[] {
-            "Male",
-            "Female"});
-            this.cbGender.Location = new System.Drawing.Point(23, 182);
-            this.cbGender.Name = "cbGender";
-            this.cbGender.Size = new System.Drawing.Size(185, 21);
-            this.cbGender.TabIndex = 3;
             // 
             // btnDelete
             // 
@@ -287,9 +223,9 @@
             // dgvCustomer
             // 
             this.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCustomer.Location = new System.Drawing.Point(12, 48);
+            this.dgvCustomer.Location = new System.Drawing.Point(109, 48);
             this.dgvCustomer.Name = "dgvCustomer";
-            this.dgvCustomer.Size = new System.Drawing.Size(643, 366);
+            this.dgvCustomer.Size = new System.Drawing.Size(464, 366);
             this.dgvCustomer.TabIndex = 1;
             this.dgvCustomer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCustomer_CellClick);
             // 
@@ -319,8 +255,6 @@
             // 
             this.panel3.Controls.Add(this.panel8);
             this.panel3.Controls.Add(this.panel7);
-            this.panel3.Controls.Add(this.panel6);
-            this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.panel2);
             this.panel3.Controls.Add(this.btnSearch);
@@ -330,19 +264,16 @@
             this.panel3.Controls.Add(this.btnUpdate);
             this.panel3.Controls.Add(this.txtCustomerName);
             this.panel3.Controls.Add(this.btnAdd);
-            this.panel3.Controls.Add(this.lblCustomerGender);
-            this.panel3.Controls.Add(this.label6);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.txtPhone);
-            this.panel3.Controls.Add(this.dateTimeCusBirth);
             this.panel3.Controls.Add(this.txtAddress);
-            this.panel3.Controls.Add(this.cbGender);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(287, 474);
             this.panel3.TabIndex = 0;
+            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
             // 
             // Customer_Form
             // 
@@ -367,8 +298,6 @@
 
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel7;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSearch;
@@ -378,14 +307,10 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.TextBox txtCustomerName;
         private System.Windows.Forms.Button btnAdd;
-        private System.Windows.Forms.Label lblCustomerGender;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtPhone;
-        private System.Windows.Forms.DateTimePicker dateTimeCusBirth;
         private System.Windows.Forms.TextBox txtAddress;
-        private System.Windows.Forms.ComboBox cbGender;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridView dgvCustomer;
         private System.Windows.Forms.Panel panel1;
